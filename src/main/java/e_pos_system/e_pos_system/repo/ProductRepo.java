@@ -11,9 +11,9 @@ import java.util.List;
 
 @Repository
 public interface ProductRepo extends JpaRepository<Product,String> {
-    @Query(value = "SELECT * FROM product WHERE `title` LIKE %?1% OR description LIKE %?1% ORDER BY title ASC ",nativeQuery = true)
+    @Query(value = "SELECT * FROM product WHERE `title` LIKE %?1% OR description LIKE %?1% OR unit_price LIKE %?1% OR qty LIKE %?1% ORDER BY title ASC ",nativeQuery = true)
     public Page<Product> findAllWithSearchText(String searchText, Pageable pageable);
-    @Query(value = "SELECT COUNT(*) FROM product WHERE `title` LIKE %?1% OR description LIKE %?1% ",nativeQuery = true)
+    @Query(value = "SELECT COUNT(*) FROM product WHERE `title` LIKE %?1% OR description LIKE %?1% OR unit_price LIKE %?1% OR qty LIKE %?1% ",nativeQuery = true)
     public long countAllWithSearchText(String searchText);
 
 }

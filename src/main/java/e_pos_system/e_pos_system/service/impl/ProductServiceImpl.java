@@ -23,6 +23,8 @@ public class ProductServiceImpl implements ProductService {
                 .title(dto.getTitle())
                 .description(dto.getDescription())
                 .data(dto.getDate())
+                .unitPrice(dto.getUnitPrice())
+                .qty(dto.getQty())
                 .build();
         productRepo.save(product);
 
@@ -38,6 +40,8 @@ public class ProductServiceImpl implements ProductService {
         product.setData(dto.getDate());
         product.setTitle(dto.getTitle());
         product.setDescription(dto.getDescription());
+        product.setUnitPrice(dto.getUnitPrice());
+        product.setQty(dto.getQty());
         productRepo.save(product);
     }
 
@@ -71,6 +75,8 @@ public class ProductServiceImpl implements ProductService {
                 .title(product.getTitle())
                 .description(product.getDescription())
                 .date(product.getData())
+                .unitPrice(product.getUnitPrice())
+                .qty(product.getQty())
                 .build();
     }
 }

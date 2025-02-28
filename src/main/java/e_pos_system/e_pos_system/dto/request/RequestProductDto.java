@@ -13,4 +13,6 @@ public class RequestProductDto {
     private String title;
     private String description;
     private String date;
+    private double unitPrice;
+    private int qty;
 }

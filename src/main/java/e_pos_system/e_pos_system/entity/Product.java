@@ -15,12 +15,16 @@ import lombok.NoArgsConstructor;
 @Entity(name = "product")
 public class Product {
     @Id
-    @Column(name = "productId", nullable = false)
+    @Column(name = "productId", nullable = false, length = 80)
     private String productId;
-    @Column(name = "title", nullable = false)
+    @Column(name = "title", nullable = false, length = 255)
     private String title;
-    @Column(name = "description", nullable = false)
+    @Column(name = "description", nullable = false, length = 255)
     private String description;
-    @Column(name = "data", nullable = false)
+    @Column(name = "data", nullable = false, length = 80)
     private String data;
+    @Column(name = "unitPrice",nullable = false, length = 20)
+    private double unitPrice;
+    @Column(name = "qty",nullable = false, length = 20)
+    private int qty;
 }
