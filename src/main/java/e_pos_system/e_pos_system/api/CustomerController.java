@@ -48,11 +48,11 @@ public class CustomerController {
                 HttpStatus.OK
         );
     }
-    @GetMapping("/search")
-    public ResponseEntity<StandardResponse> findAll(
-            @RequestParam String searchText,
-            @RequestParam int page,
-            @RequestParam int size
+    @GetMapping
+    public ResponseEntity<StandardResponse> getAll(
+            @RequestParam(defaultValue = "",required = false) String searchText,
+            @RequestParam(defaultValue = "0",required = false)  int page,
+            @RequestParam(defaultValue = "10",required = false)  int size
     ){
         return new ResponseEntity<>(
                 new StandardResponse(200,"Customer list!",customerService.findAll(searchText,page,size)),
