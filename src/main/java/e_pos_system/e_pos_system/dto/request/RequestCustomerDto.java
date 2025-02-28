@@ -1,7 +1,6 @@
 package e_pos_system.e_pos_system.dto.request;
 
 import lombok.*;
-import org.springframework.stereotype.Repository;
 
 
 @AllArgsConstructor
