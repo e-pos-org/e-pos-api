@@ -6,6 +6,7 @@ import e_pos_system.e_pos_system.util.StandardResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -15,7 +16,9 @@ import org.springframework.web.bind.annotation.*;
 public class productController {
     private final ProductService productService;
     @PostMapping
-    public ResponseEntity<StandardResponse> create(@RequestBody RequestProductDto dto){
+    public ResponseEntity<StandardResponse> create(@Validated @RequestBody  RequestProductDto dto){
+
+        System.out.println(dto);
         productService.create(dto);
         return new ResponseEntity<>(
                 new StandardResponse(201,"Product Created!",null),

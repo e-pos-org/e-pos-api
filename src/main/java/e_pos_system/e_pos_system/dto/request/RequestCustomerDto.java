@@ -13,6 +13,4 @@ public class RequestCustomerDto {
     private String email;
     private String address;
     private String phone;
-    private double unitPrice;
-    private int qty;
 }

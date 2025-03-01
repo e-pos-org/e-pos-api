@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -14,7 +16,7 @@ public class ResponseProductDto {
     private String productId;
     private String title;
     private String description;
-    private String date;
+    private Date date;
     private double unitPrice;
     private int qty;
 }

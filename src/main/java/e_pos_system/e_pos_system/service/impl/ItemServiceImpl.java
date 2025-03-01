@@ -22,9 +22,10 @@ public class ItemServiceImpl implements ItemService {
                 .itemId(UUID.randomUUID().toString())
                 .title(dto.getTitle())
                 .description(dto.getDescription())
-                .data(dto.getDate())
+                .date(dto.getDate())
                 .unitPrice(dto.getUnitPrice())
                 .qty(dto.getQty())
+                .product(dto.getProductId())
                 .build();
         itemRepo.save(item);
     }
@@ -37,10 +38,11 @@ public class ItemServiceImpl implements ItemService {
         }
         Item item = selectedItem.get();
         item.setQty(dto.getQty());
-        item.setData(dto.getDate());
+        item.setDate(dto.getDate());
         item.setDescription(dto.getDescription());
         item.setTitle(dto.getTitle());
         item.setUnitPrice(dto.getUnitPrice());
+        item.setProduct(dto.getProductId());
         itemRepo.save(item);
     }
 
@@ -70,11 +72,12 @@ public class ItemServiceImpl implements ItemService {
     private ResponseItemDto toResponseItemDto(Item item){
         return ResponseItemDto.builder()
                 .itemId(item.getItemId())
-                .date(item.getData())
+                .date(item.getDate())
                 .description(item.getDescription())
                 .qty(item.getQty())
                 .unitPrice(item.getUnitPrice())
                 .title(item.getTitle())
+                .product(item.getProduct())
                 .build();
     }
 }

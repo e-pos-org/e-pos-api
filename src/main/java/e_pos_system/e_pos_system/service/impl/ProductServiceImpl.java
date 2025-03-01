@@ -18,16 +18,20 @@ public class ProductServiceImpl implements ProductService {
     private final ProductRepo productRepo;
     @Override
     public void create(RequestProductDto dto) {
-        Product product = Product.builder()
-                .productId(UUID.randomUUID().toString())
-                .title(dto.getTitle())
-                .description(dto.getDescription())
-                .data(dto.getDate())
-                .unitPrice(dto.getUnitPrice())
-                .qty(dto.getQty())
-                .build();
-        productRepo.save(product);
+       try {
+           Product product = Product.builder()
+                   .productId(UUID.randomUUID().toString())
+                   .title(dto.getTitle())
+                   .description(dto.getDescription())
+                   .date(dto.getDate())
+                   .unitPrice(dto.getUnitPrice())
+                   .qty(dto.getQty())
+                   .build();
+           productRepo.save(product);
 
+       }catch (Exception e){
+           throw new RuntimeException(e);
+       }
     }
 
     @Override
@@ -37,7 +41,7 @@ public class ProductServiceImpl implements ProductService {
             throw new RuntimeException("Product Not Found");
         }
         Product product = selectedProduct.get();
-        product.setData(dto.getDate());
+        product.setDate(dto.getDate());
         product.setTitle(dto.getTitle());
         product.setDescription(dto.getDescription());
         product.setUnitPrice(dto.getUnitPrice());
@@ -74,7 +78,7 @@ public class ProductServiceImpl implements ProductService {
                 .productId(product.getProductId())
                 .title(product.getTitle())
                 .description(product.getDescription())
-                .date(product.getData())
+                .date(product.getDate())
                 .unitPrice(product.getUnitPrice())
                 .qty(product.getQty())
                 .build();
