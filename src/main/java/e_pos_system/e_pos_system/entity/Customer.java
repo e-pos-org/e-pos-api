@@ -19,7 +19,7 @@ public class Customer {
     private String customerId;
     @Column(name = "name",nullable = false,length = 255)
     private String name;
-    @Column(name = "email",nullable = false,length = 255)
+    @Column(name = "email",nullable = false,length = 255,unique = true)
     private String email;
     @Column(name = "address",nullable = false,length = 255)
     private String address;

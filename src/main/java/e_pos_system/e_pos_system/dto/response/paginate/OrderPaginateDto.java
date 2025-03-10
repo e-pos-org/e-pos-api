@@ -1,7 +1,7 @@
 package e_pos_system.e_pos_system.dto.response.paginate;
 
-import e_pos_system.e_pos_system.dto.response.ResponseItemDto;
-import e_pos_system.e_pos_system.entity.Item;
+import e_pos_system.e_pos_system.dto.response.ResponseOrderDto;
+import e_pos_system.e_pos_system.entity.Order;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 @Data
-public class ItemPaginateDto {
+public class OrderPaginateDto {
     private long count;
-    private List<ResponseItemDto> itemList;
+    private List<ResponseOrderDto> orderList;
 }
