@@ -4,6 +4,7 @@ import e_pos_system.e_pos_system.dto.request.RequestCustomerDto;
 import e_pos_system.e_pos_system.dto.response.ResponseCustomerDto;
 import e_pos_system.e_pos_system.dto.response.paginate.CustomerPaginateDto;
 import e_pos_system.e_pos_system.entity.Customer;
+import e_pos_system.e_pos_system.exception.EntryNotFoundException;
 import e_pos_system.e_pos_system.repo.CustomerRepo;
 import e_pos_system.e_pos_system.service.CustomerService;
 import lombok.RequiredArgsConstructor;
@@ -33,7 +34,7 @@ public class CustomerServiceImpl implements CustomerService {
     public void update(RequestCustomerDto dto, String id) {
         Optional<Customer> selectedCustomer = customerRepo.findById(id);
         if (selectedCustomer.isEmpty()){
-            throw new RuntimeException("Customer Not Found");
+            throw new EntryNotFoundException("Customer Not Found");
         }
         Customer customer = selectedCustomer.get();
         customer.setName(dto.getName());
@@ -52,7 +53,7 @@ public class CustomerServiceImpl implements CustomerService {
     public ResponseCustomerDto getById(String id) {
         Optional<Customer> selectedCustomer = customerRepo.findById(id);
         if (selectedCustomer.isEmpty()){
-            throw new RuntimeException("Customer Not Found");
+            throw new EntryNotFoundException("Customer Not Found");
         }
         return toResponseCustomer(selectedCustomer.get());
     }

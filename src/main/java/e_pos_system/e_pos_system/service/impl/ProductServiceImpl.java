@@ -3,6 +3,7 @@ import e_pos_system.e_pos_system.dto.request.RequestProductDto;
 import e_pos_system.e_pos_system.dto.response.ResponseProductDto;
 import e_pos_system.e_pos_system.dto.response.paginate.ProductPaginateDto;
 import e_pos_system.e_pos_system.entity.Product;
+import e_pos_system.e_pos_system.exception.EntryNotFoundException;
 import e_pos_system.e_pos_system.repo.ProductRepo;
 import e_pos_system.e_pos_system.service.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -38,7 +39,7 @@ public class ProductServiceImpl implements ProductService {
     public void update(RequestProductDto dto, String id) {
         Optional<Product> selectedProduct = productRepo.findById(id);
         if (selectedProduct.isEmpty()){
-            throw new RuntimeException("Product Not Found");
+            throw new EntryNotFoundException("Product Not Found");
         }
         Product product = selectedProduct.get();
         product.setDate(dto.getDate());
@@ -58,7 +59,7 @@ public class ProductServiceImpl implements ProductService {
     public ResponseProductDto getById(String id) {
         Optional<Product> selectedProduct = productRepo.findById(id);
         if (selectedProduct.isEmpty()){
-            throw new RuntimeException("Product Not Found");
+            throw new EntryNotFoundException("Product Not Found");
         }
         return toResponseProductDto(selectedProduct.get());
     }
